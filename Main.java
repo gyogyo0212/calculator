@@ -24,16 +24,29 @@ public class Main {
 
 
             //연산기호 제어문
-            int result = switch (charAt) {
-                case "+" -> calculator.sum(a, b);
-                case "-" -> calculator.sub(a, b);
-                case "*" -> calculator.mul(a, b);
-                case "/" -> calculator.div(a, b);
-                default -> {
+            int result =0;
+            switch (charAt) {
+                case "+":
+                    result = calculator.sum(a, b);
+                    break;
+                case "-":
+                    result = calculator.sub(a, b);
+                    break;
+                case "*":
+                    result = calculator.mul(a, b);
+                    break;
+                case "/":
+                    if(b==0){
+                        System.out.println("0으로 나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다.");
+                        continue;
+                    }
+                    result = calculator.div(a, b);
+
+                default:
                     System.out.println("올바른 연산자를 입력해 주세요.");
-                    yield 0;
-                }
-            };
+                    continue;
+
+            }
 
 
             System.out.println("결과 = " + result);
